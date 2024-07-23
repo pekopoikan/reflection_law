@@ -8,8 +8,6 @@
 #include <cmath>
 #include <utility>
 
-#define DEBUG
-
 template <typename T>
 inline constexpr bool is_string_type = std::is_same<T, std::string>::value || std::is_same<T, const char *>::value;
 
@@ -173,8 +171,6 @@ T Matrix<T>::determinant() const {
 
             Matrix mtx = Matrix<T>(s);
 
-            mtx.display();
-
             m.push_back(std::pair(a, mtx));
         }
 
@@ -211,11 +207,15 @@ void Matrix<T>::display() const noexcept
 
 int main()
 {
+    #ifdef DEBUG
+        std::cout << "DEBUG mode enabled" << std::endl;
+    #endif
+
     Matrix m = Matrix<int>("1 2 3 4;3 2 2 2;1 1 6 7;2 3 4 4");
 
     try {
         std::cout << m.determinant() << std::endl;
-    } catch (std::runtime_error err) {
+    } catch (std::out_of_range const& err) {
         err.what();
     }
 
