@@ -8,6 +8,8 @@
 #include <cmath>
 #include <utility>
 
+#define DEBUG
+
 template <typename T>
 inline constexpr bool is_string_type = std::is_same<T, std::string>::value || std::is_same<T, const char *>::value;
 
@@ -54,8 +56,6 @@ Matrix<T>::Matrix(U value) noexcept
     this->row = rowvalues.size();
     this->col = rowvalues[0].size();
     this->values = rowvalues;
-
-    std::cout << "Initiliazed " << this->row << "x" << this->col << " matrix" << std::endl;
 }
 
 template <typename T>
@@ -130,13 +130,11 @@ T Matrix<T>::determinant() const {
 
     // 2x2
     if (this->row == 2 && this->col == 2) {
-        std::cout << "calculatin 2x2" << std::endl;
         return this->values[0][0] * this->values[1][1] - this->values[0][1] * this->values[1][0];
     }
 
     // 3x3
     else if (this->row == 3 && this->col == 3) {
-        std::cout << "calculatin 3x3" << std::endl;
         return (
             this->values[0][0] * this->values[1][1] * this->values[2][2] +
             this->values[0][1] * this->values[1][2] * this->values[2][0] +
@@ -149,8 +147,6 @@ T Matrix<T>::determinant() const {
 
     // n x n
     else {
-        std::cout << "calculatin nxn" << std::endl;
-
         std::vector<std::pair<T,Matrix<T>>> m;
 
         for (int c = 0; c < this->row; c++) {
@@ -175,11 +171,8 @@ T Matrix<T>::determinant() const {
 
             std::string s = createMatrixString<T>(nv);
 
-            std::cout << "got string: " << s << std::endl;
-
             Matrix mtx = Matrix<T>(s);
 
-            std::cout << "created matrix:" << std::endl;
             mtx.display();
 
             m.push_back(std::pair(a, mtx));
