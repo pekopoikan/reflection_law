@@ -1,12 +1,15 @@
-#include <cstdlib>
-#include <iostream>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_video.h>
+#include <cwchar>
 #include <stdexcept>
-#include <string>
 #include <type_traits>
 #include <vector>
+#include <string>
 #include <sstream>
+#include <iostream>
 #include <cmath>
-#include <utility>
+
+#define SQUARE(x) (x * x)
 
 template <typename T>
 inline constexpr bool is_string_type = std::is_same<T, std::string>::value || std::is_same<T, const char *>::value;
@@ -62,9 +65,11 @@ std::string createMatrixString(std::vector<std::vector<T>> vec) noexcept
     std::string matrixstring;
 
     for (std::vector<T>& v : vec) {
+
         for (std::size_t i = 0; i < v.size(); i++) {
             matrixstring.append(std::to_string(v[i]) + (i == v.size() - 1 ? "" : " "));
         }
+
         matrixstring.append(";");
     }
 
@@ -205,17 +210,110 @@ void Matrix<T>::display() const noexcept
     }
 }
 
+template <typename T, typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+struct Vec {
+    Vec(T x, T y, T z) : x {x}, y {y}, z {z} {};
+
+    void operator += (Vec<T>&);
+    void operator = (Vec<T>&);
+    Vec<T> operator - (Vec<T>&);
+    Vec<T> operator * (T) = delete; // let's respect the correct order ! :^)
+    template <typename U>
+    friend Vec<U> operator * (Vec<U>&, U);
+
+    Vec<T> unit();
+    T size();
+
+    T x;
+    T y;
+    T z;
+    // don't need more than 3D
+};
+
+template <typename T, typename = typename std::enable_if<std::is_arithmetic<T>::value>::type>
+Vec<T> operator * (Vec<T>& vec, T scalar) {
+    return Vec(vec.x * scalar, vec.y * scalar, vec.z * scalar);
+}
+
+template <typename T, typename U>
+void Vec<T, U>::operator += (Vec<T>& rhs)
+{
+    this->x += rhs.x;
+    this->y += rhs.y;
+    this->z += rhs.z;
+}
+
+template <typename T, typename U>
+void Vec<T, U>::operator = (Vec<T>& rhs)
+{
+    this->x = rhs.x;
+    this->y = rhs.y;
+    this->z = rhs.z;
+}
+
+template <typename T, typename U>
+Vec<T> Vec<T, U>::operator - (Vec<T>& rhs) {
+    return Vec<T>(this->x - rhs.x, this->y - rhs.y, this->z - rhs.z);
+}
+
+template <typename T, typename U>
+Vec<T> Vec<T,U>::unit() {
+    T size = this->size();
+
+    return Vec<T>(this->x / size, this->y / size, this->z / size);
+}
+
+template <typename T, typename U>
+T Vec<T, U>::size() {
+    return std::pow((SQUARE(this->x) + SQUARE(this->y) + SQUARE(this->z)), 1/2);
+}
+
+class Ray {
+    public:
+        Ray(Vec<float> s, Vec<float> e, float a) : points(std::pair(s, e)), angle(a) {};
+    private:
+        std::pair<Vec<float>, Vec<float>> points; // start - end
+        float angle;
+};
+
+class Window {
+    public:
+        template <typename U, typename = typename std::enable_if<is_string_type<U>>::type>
+        Window(U);
+        ~Window();
+    public:
+        void show();
+    private:
+        int windowWidth = 500;
+        int windowHeight = 500;
+    private:
+        SDL_Window* window;
+};
+
+template <typename U, typename>
+Window::Window(U title) {
+    this->window = SDL_CreateWindow(title, 0, 0, this->windowWidth, this->windowHeight, 0);
+
+    if (this->window == nullptr) {
+        throw std::runtime_error("Failed to create SDL Window");
+    }
+};
+
+Window::~Window() {
+    SDL_DestroyWindow(this->window);
+};
+
 int main()
 {
+    Matrix m = Matrix<int>("1 2;1 2");
+
     #ifdef DEBUG
         std::cout << "DEBUG mode enabled" << std::endl;
     #endif
 
-    Matrix m = Matrix<int>("1 2 3 4;3 2 2 2;1 1 6 7;2 3 4 4");
-
     try {
         std::cout << m.determinant() << std::endl;
-    } catch (std::out_of_range const& err) {
+    } catch (std::runtime_error const& err) {
         err.what();
     }
 
