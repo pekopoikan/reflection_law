@@ -1,0 +1,14 @@
+# Target labels
+ imgui_external-populate
+# Source files and their labels
+/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/CMakeFiles/imgui_external-populate
+/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/CMakeFiles/imgui_external-populate.rule
+/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/CMakeFiles/imgui_external-populate-complete.rule
+/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/imgui_external-populate-prefix/src/imgui_external-populate-stamp/imgui_external-populate-build.rule
+/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/imgui_external-populate-prefix/src/imgui_external-populate-stamp/imgui_external-populate-configure.rule
+/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/imgui_external-populate-prefix/src/imgui_external-populate-stamp/imgui_external-populate-download.rule
+/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/imgui_external-populate-prefix/src/imgui_external-populate-stamp/imgui_external-populate-install.rule
+/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/imgui_external-populate-prefix/src/imgui_external-populate-stamp/imgui_external-populate-mkdir.rule
+/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/imgui_external-populate-prefix/src/imgui_external-populate-stamp/imgui_external-populate-patch.rule
+/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/imgui_external-populate-prefix/src/imgui_external-populate-stamp/imgui_external-populate-test.rule
+/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/imgui_external-populate-prefix/src/imgui_external-populate-stamp/imgui_external-populate-update.rule

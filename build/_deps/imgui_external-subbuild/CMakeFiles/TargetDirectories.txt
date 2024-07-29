@@ -1,0 +1,3 @@
+/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/CMakeFiles/imgui_external-populate.dir
+/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/CMakeFiles/edit_cache.dir
+/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,46 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/CMakeFiles/imgui_external-populate"
+		},
+		{
+			"file" : "/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/CMakeFiles/imgui_external-populate.rule"
+		},
+		{
+			"file" : "/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/CMakeFiles/imgui_external-populate-complete.rule"
+		},
+		{
+			"file" : "/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/imgui_external-populate-prefix/src/imgui_external-populate-stamp/imgui_external-populate-build.rule"
+		},
+		{
+			"file" : "/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/imgui_external-populate-prefix/src/imgui_external-populate-stamp/imgui_external-populate-configure.rule"
+		},
+		{
+			"file" : "/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/imgui_external-populate-prefix/src/imgui_external-populate-stamp/imgui_external-populate-download.rule"
+		},
+		{
+			"file" : "/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/imgui_external-populate-prefix/src/imgui_external-populate-stamp/imgui_external-populate-install.rule"
+		},
+		{
+			"file" : "/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/imgui_external-populate-prefix/src/imgui_external-populate-stamp/imgui_external-populate-mkdir.rule"
+		},
+		{
+			"file" : "/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/imgui_external-populate-prefix/src/imgui_external-populate-stamp/imgui_external-populate-patch.rule"
+		},
+		{
+			"file" : "/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/imgui_external-populate-prefix/src/imgui_external-populate-stamp/imgui_external-populate-test.rule"
+		},
+		{
+			"file" : "/home/r/Desktop/cpp/test/build/_deps/imgui_external-subbuild/imgui_external-populate-prefix/src/imgui_external-populate-stamp/imgui_external-populate-update.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"imgui_external-populate"
+		],
+		"name" : "imgui_external-populate"
+	}
+}

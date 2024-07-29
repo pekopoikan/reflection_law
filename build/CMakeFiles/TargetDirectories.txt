@@ -1,0 +1,4 @@
+/home/r/Desktop/cpp/test/build/CMakeFiles/imgui.dir
+/home/r/Desktop/cpp/test/build/CMakeFiles/main.dir
+/home/r/Desktop/cpp/test/build/CMakeFiles/edit_cache.dir
+/home/r/Desktop/cpp/test/build/CMakeFiles/rebuild_cache.dir
